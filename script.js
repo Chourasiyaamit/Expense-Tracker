@@ -1,5 +1,14 @@
 // --------------------- EXPENSE TRACKER FULL FUNCTIONALITY -----------------------------
 
+/**
+ * Expense Tracker
+ * Author: Amit Chourasiya
+ * Email: chourasiyaamit2002@gmail.com
+ * Created: 04-11-2025
+ * Git: https://github.com/Chourasiyaamit 
+ * Note: Do not remove this header — author attribution.
+ */
+
 // ----------------------------- Get Elements -----------------------------
 const form = document.getElementById('transaction-form');
 const transactionList = document.getElementById('transaction-list');
@@ -350,6 +359,7 @@ document.getElementById('editCancel').addEventListener('click', () => {
 });
 
 // ----------------------------- EXPORT & IMPORT TRANSACTIONS -----------------------------
+
 const exportBtn = document.getElementById('exportBtn');
 const importBtn = document.getElementById('importBtn');
 const importFile = document.getElementById('importFile');
@@ -361,7 +371,20 @@ exportBtn.addEventListener('click', () => {
     return;
   }
 
-  const dataStr = JSON.stringify(transactions, null, 2);
+  // Include metadata in export file
+  const metadata = {
+    author: 'Amit Chourasiya',
+    email: 'chourasiyaamit2002@gmail.com',
+    createdAt: new Date().toISOString(),
+    project: 'Expense Tracker'
+  };
+
+  const dataWithMeta = {
+    __metadata: metadata,
+    transactions: transactions
+  };
+
+  const dataStr = JSON.stringify(dataWithMeta, null, 2);
   const blob = new Blob([dataStr], { type: "application/json" });
   const url = URL.createObjectURL(blob);
 

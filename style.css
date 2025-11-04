@@ -1,3 +1,9 @@
+/* 
+  Expense Tracker CSS
+  Author: Amit Chourasiya
+  © 2025 Amit Chourasiya
+*/
+
 /* -------- Global Reset -------- */
 * {
     margin: 0;
@@ -38,6 +44,20 @@ header h1 {
 header i {
     font-size: 22px;
     color: #32cd32;
+}
+
+.author-badge{
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: rgba(50,205,50,0.08);
+  color: #167d16;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight:600;
+  font-size:13px;
+  z-index:9999;
+  pointer-events:none; /* so it won't block clicks */
 }
 
 /* ------- DASHBOARD TOP (SUMMARY + Add Transaction FORM + Expense Distribution ) ------ */
