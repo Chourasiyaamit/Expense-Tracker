@@ -57,7 +57,41 @@ header i {
   font-weight:600;
   font-size:13px;
   z-index:9999;
-  pointer-events:none; /* so it won't block clicks */
+  pointer-events:none; 
+}
+
+/* ---------- Responsive: Header ---------- */
+@media (max-width: 600px) {
+  header {
+    padding: 8px 0;
+  }
+
+  header h1 {
+    font-size: 20px;
+    gap: 6px;
+  }
+
+  header i {
+    font-size: 20px;
+  }
+
+  .author-badge {
+    top: 8px;
+    right: 8px;
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  header h1 {
+    font-size: 18px;
+  }
+
+  .author-badge {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
 }
 
 /* ------- DASHBOARD TOP (SUMMARY + Add Transaction FORM + Expense Distribution ) ------ */
@@ -78,7 +112,7 @@ header i {
     gap: 25px;
 }
 
-/* ----------------------------------------------- Summary Cards ------------------------------------------------- */
+/* ------------------------------------ Summary Cards ------------------------------------------ */
 .summary {
     flex: 2;
     display: flex;
@@ -116,6 +150,55 @@ header i {
 
 .expense .icon {
     color: #dc3545;
+}
+
+/* ---------- Responsive: Dashboard Top ---------- */
+@media (max-width: 992px) {
+  .dashboard-top {
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+  }
+
+  .dashboard-left {
+    width: 100%;
+  }
+}
+
+/* ---------- Responsive: Summary Cards ---------- */
+@media (max-width: 768px) {
+  .summary {
+    justify-content: center;
+  }
+
+  .card {
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  .summary {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .card {
+    width: 90%;
+    min-width: unset;
+  }
+}
+
+/* ---------- Responsive: Icons ---------- */
+@media (max-width: 480px) {
+  .icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .card {
+    padding: 15px;
+  }
 }
 
 /* ------------------------------------------- Add New Transaction Section --------------------------------------- */
@@ -221,6 +304,64 @@ select:focus {
     margin-right: 6px;
 }
 
+/* ---------- Responsive: Add New Transaction Section ---------- */
+@media (max-width: 992px) {
+  .form-section {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr; /* All inputs full width */
+  }
+
+  .form-buttons {
+    justify-content: center; /* Center buttons on tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .form-section {
+    padding: 25px 20px;
+    margin: 15px;
+  }
+
+  .form-header h2 {
+    font-size: 18px;
+  }
+
+  .form-header i {
+    font-size: 20px;
+  }
+
+  input,
+  select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .add-btn,
+  .reset-btn {
+    padding: 9px 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .form-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-btn,
+  .reset-btn {
+    width: 100%;
+  }
+}
+
 /* ---------------------------------- Chart Section (Expense Distribution, Pie Chart) -------------------------- */
 .chart-section {
   flex: 1;
@@ -277,13 +418,11 @@ select:focus {
   color: #333 !important;
 }
 
-/* Tablet view (max-width: 900px) */
-@media (max-width: 900px) {
+/* ---------- Responsive: Chart Section ---------- */
+@media (max-width: 992px) {
   .chart-section {
-    width: 100%;
-    max-width: 480px;
-    margin: 20px auto;
-    padding: 25px 10px;
+    padding: 20px 15px;
+    min-height: 60vh;
   }
 
   #expenseChart {
@@ -293,27 +432,32 @@ select:focus {
 
   .chartjs-legend li {
     font-size: 14px !important;
+    gap: 12px !important;
   }
 }
 
-/* Mobile view (max-width: 600px) */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .chart-section {
-    padding: 20px 12px;
-    border-radius: 10px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-    min-height: 60vh;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
   }
 
-  .chart-section h3 {
-    font-size: 16px;
-    margin-bottom: 20px;
+  #expenseChart {
+    width: 280px !important;
+    height: 280px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .chart-section {
+    padding: 18px 12px;
+    min-height: 50vh;
   }
 
   #expenseChart {
     width: 250px !important;
     height: 250px !important;
-    margin: 5px auto;
   }
 
   .chartjs-legend {
@@ -322,13 +466,10 @@ select:focus {
   }
 
   .chartjs-legend li {
-    font-size: 14px !important; 
-    font-weight: 500;
-    color: #333 !important;
+    font-size: 13.5px !important;
   }
 }
 
-/* small screens (max-width: 400px) */
 @media (max-width: 400px) {
   #expenseChart {
     width: 220px !important;
@@ -339,12 +480,8 @@ select:focus {
     min-height: auto;
   }
 
-  .chart-section h3 {
-    font-size: 15px;
-  }
-
   .chartjs-legend li {
-    font-size: 13.5px !important;
+    font-size: 13px !important;
   }
 }
 
@@ -357,7 +494,7 @@ select:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/*  Header  */
+/* ------------------- Header ------------------- */
 .transactions-header {
   display: flex;
   justify-content: space-between;
@@ -370,7 +507,7 @@ select:focus {
   font-weight: 600;
 }
 
-/* --------------- Search Bar ---------------- */
+/* ------------------- Search Bar ------------------- */
 .search-bar {
   display: flex;
   align-items: center;
@@ -402,18 +539,7 @@ select:focus {
   color: #888;
 }
 
-@media (max-width: 768px) {
-  .search-bar {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .search-bar input {
-    width: 100%;
-  }
-}
-
-/* -------------- Transaction Table --------- */
+/* ------------------- Transaction Table ------------------- */
 .transactions-table {
   width: 100%;
   overflow-x: auto; 
@@ -442,7 +568,7 @@ select:focus {
   transition: background 0.3s ease;
 }
 
-/* Transaction List Items */
+/* ------------------- Transaction List Items ------------------- */
 #transaction-list {
   list-style: none;
   margin: 0;
@@ -466,7 +592,7 @@ select:focus {
   border-bottom: none;
 }
 
-/*  Category, Type, Amount, Actions  */
+/* ------------------- Category, Type, Amount, Actions ------------------- */
 .category-tag {
   color: #000;
   padding: 3px 10px;
@@ -523,7 +649,7 @@ select:focus {
   transform: scale(1.1);
 }
 
-/*  Tablet View  */
+/* ------------------- Responsive: Transactions LIST ------------------- */
 @media (max-width: 900px) {
   .transactions {
     padding: 20px;
@@ -536,7 +662,6 @@ select:focus {
   }
 }
 
-/*  Mobile View  */
 @media (max-width: 600px) {
   .transactions {
     margin: 20px 10px;
@@ -551,7 +676,7 @@ select:focus {
     margin-top: 15px;
   }
 
-  /* Make scroll smooth on mobile */
+  /* Smooth scroll for mobile */
   .transactions-table::-webkit-scrollbar {
     height: 8px;
   }
@@ -566,7 +691,7 @@ select:focus {
   }
 }
 
-/*  Extra Small Phones  */
+/* ------------------- Extra Small Phones ------------------- */
 @media (max-width: 400px) {
   .transactions-header h2 {
     font-size: 16px;
@@ -670,10 +795,10 @@ select:focus {
   font-size: 16px;
 }
 
-/* Tablet screens (992px) */
+/* ---------- Responsive: Import / Export / Clear All Buttons ---------- */
 @media (max-width: 992px) {
   .transactions-actions {
-    justify-content: center;
+    justify-content: center; /* center the container */
   }
 
   .action-buttons {
@@ -690,33 +815,39 @@ select:focus {
   }
 }
 
-/* Mobile screens (768px) */
 @media (max-width: 768px) {
   .transactions-actions {
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* center children vertically */
   }
 
   .action-buttons {
     width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: center; /* center buttons horizontally */
     gap: 12px;
+    flex-wrap: wrap;
   }
 
   .import-btn,
   .export-btn,
   .clear-btn {
-    width: 90%;
+    width: 100%; /* take full width */
+    max-width: 300px; /* optional: limit max width */
     font-size: 14px;
     padding: 12px 0;
     border-radius: 8px;
-    min-width: auto;
   }
 }
 
-/* Extra small screens (480px) */
 @media (max-width: 480px) {
+  .transactions-actions {
+    margin: 10px 0 15px;
+  }
+
+  .action-buttons {
+    justify-content: center;
+  }
+
   .import-btn,
   .export-btn,
   .clear-btn {
@@ -731,11 +862,8 @@ select:focus {
   .clear-btn i {
     font-size: 14px;
   }
-
-  .transactions-actions {
-    margin: 10px 0 15px;
-  }
 }
+
 
 /* -------------------------------------------- Popup Notification Styling --------------------------------------- */
 .popup {
@@ -854,6 +982,7 @@ footer {
     color: #555;
 }
 
+/* -------------------------Responsive: Footer -----------------------*/
 @media (max-width: 768px) {
     .dashboard-top {
         flex-direction: column;
